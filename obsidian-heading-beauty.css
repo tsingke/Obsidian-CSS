@@ -16,43 +16,89 @@
 }
 
 /* ===================== */
-/* ===== 预览模式标题 ===== */
+/* ===== 预览模式 ===== */
 /* ===================== */
 
-h1 {
+/* 初始化计数器 */
+body .markdown-preview-view,
+body .markdown-rendered {
+  counter-reset: h1 h2 h3 h4 h5 h6;
+}
+
+/* 一级标题 (#) */
+body .markdown-preview-view h1,
+body .markdown-rendered h1 {
+  counter-reset: h2;
+  counter-increment: h1;
+  position: relative !important;
   background-color: var(--heading-bg) !important;
   color: var(--heading-color) !important;
   padding: 8px 14px !important;
   font-weight: bold !important;
-  font-size: 1.3em !important;
   margin-top: 2em !important;
   margin-bottom: 1em !important;
-  position: relative !important;
+  font-size: 1.3em !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-h1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background-color: var(--heading-accent);
+body .markdown-preview-view h1::before,
+body .markdown-rendered h1::before {
+  content: counter(h1) ". " !important;
+  position: relative;
+  margin-right: 6px;
+}
+
+body .markdown-preview-view h1::after,
+body .markdown-rendered h1::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 6px !important;
+  height: 100% !important;
+  background-color: var(--heading-accent) !important;
+  /*border-radius: 2px 0 0 2px !important;*/
   border-radius: 0 !important; /* 改为直角 */
 }
 
-h2 {
+/* 二级标题 (##) */
+body .markdown-preview-view h2,
+body .markdown-rendered h2 {
+  counter-reset: h3;
+  counter-increment: h2;
+  position: relative !important;
   color: var(--heading-bg) !important;
   font-weight: bold !important;
   padding-bottom: 4px !important;
   margin-top: 1.5em !important;
   margin-bottom: 1em !important;
   font-size: 1.15em !important;
-  border-bottom: 2px solid var(--heading-accent) !important;
+  border-bottom: none !important;
 }
 
-h3 {
+body .markdown-preview-view h2::before,
+body .markdown-rendered h2::before {
+  content: counter(h1) "." counter(h2) " " !important;
+  margin-right: 4px;
+}
+
+body .markdown-preview-view h2::after,
+body .markdown-rendered h2::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 2px !important;
+  background-color: var(--heading-accent) !important;
+}
+
+/* 三级标题 (###) */
+body .markdown-preview-view h3,
+body .markdown-rendered h3 {
+  counter-reset: h4;
+  counter-increment: h3;
   color: var(--secondary-color) !important;
   font-weight: bold !important;
   margin-top: 1.2em !important;
@@ -60,7 +106,17 @@ h3 {
   font-size: 1.05em !important;
 }
 
-h4 {
+body .markdown-preview-view h3::before,
+body .markdown-rendered h3::before {
+  content: counter(h1) "." counter(h2) "." counter(h3) " " !important;
+  margin-right: 4px;
+}
+
+/* 四级标题 (####) */
+body .markdown-preview-view h4,
+body .markdown-rendered h4 {
+  counter-reset: h5;
+  counter-increment: h4;
   color: var(--third-color) !important;
   font-weight: bold !important;
   margin-top: 1em !important;
@@ -68,7 +124,17 @@ h4 {
   font-size: 1em !important;
 }
 
-h5 {
+body .markdown-preview-view h4::before,
+body .markdown-rendered h4::before {
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) " " !important;
+  margin-right: 4px;
+}
+
+/* 五级标题 (#####) */
+body .markdown-preview-view h5,
+body .markdown-rendered h5 {
+  counter-reset: h6;
+  counter-increment: h5;
   color: var(--fourth-color) !important;
   font-weight: bold !important;
   margin-top: 0.8em !important;
@@ -76,7 +142,16 @@ h5 {
   font-size: 0.95em !important;
 }
 
-h6 {
+body .markdown-preview-view h5::before,
+body .markdown-rendered h5::before {
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " " !important;
+  margin-right: 4px;
+}
+
+/* 六级标题 (######) */
+body .markdown-preview-view h6,
+body .markdown-rendered h6 {
+  counter-increment: h6;
   color: var(--fifth-color) !important;
   font-weight: bold !important;
   margin-top: 0.6em !important;
@@ -84,81 +159,157 @@ h6 {
   font-size: 0.9em !important;
 }
 
+body .markdown-preview-view h6::before,
+body .markdown-rendered h6::before {
+  content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " " !important;
+  margin-right: 4px;
+}
+
 /* ===================== */
-/* ===== 编辑模式标题 ===== */
+/* ===== 编辑模式 ===== */
 /* ===================== */
 
-.cm-header-1 {
-  background-color: var(--heading-bg) !important;
-  color: var(--heading-color) !important;
-  padding: 4px 8px 4px 12px !important;
-  border-left: 6px solid var(--heading-accent) !important;
+.cm-s-obsidian .cm-header-1 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.3em;
+  color: var(--heading-color);
+  background-color: var(--heading-bg);
+  padding: 4px 8px 4px 12px;
+  border-left: 6px solid var(--heading-accent);
+  font-weight: bold;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0 !important; /* 改为直角 */
 }
 
-.cm-header-2 {
-  color: var(--heading-bg) !important;
-  border-bottom: 2px solid var(--heading-accent) !important;
+.cm-s-obsidian .cm-header-2 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.15em;
+  color: var(--heading-bg);
+  font-weight: bold;
+  border-bottom: 2px solid var(--heading-accent);
+  padding-bottom: 2px;
 }
 
-.cm-header-3 {
-  color: var(--secondary-color) !important;
+.cm-s-obsidian .cm-header-3 {
+  font-size: 1.05em;
+  color: var(--secondary-color);
+  font-weight: bold;
 }
 
-.cm-header-4 {
-  color: var(--third-color) !important;
+.cm-s-obsidian .cm-header-4 {
+  font-size: 1em;
+  color: var(--third-color);
+  font-weight: bold;
 }
 
-.cm-header-5 {
-  color: var(--fourth-color) !important;
+.cm-s-obsidian .cm-header-5 {
+  font-size: 0.95em;
+  color: var(--fourth-color);
+  font-weight: bold;
 }
 
-.cm-header-6 {
-  color: var(--fifth-color) !important;
+.cm-s-obsidian .cm-header-6 {
+  font-size: 0.9em;
+  color: var(--fifth-color);
+  font-weight: bold;
 }
 
 /* ===================== */
-/* ===== 正文行高 & 行内样式 ===== */
+/* ===== 其余样式 ===== */
 /* ===================== */
 
-p,
-li {
-  line-height: 1.7 !important;
-}
-
-strong,
-b {
+/* 编辑模式行内格式 */
+.cm-s-obsidian .cm-strong {
   color: var(--text-accent) !important;
 }
 
-em,
-i {
+.cm-s-obsidian .cm-em {
   color: var(--text-accent) !important;
 }
 
-del {
+.cm-s-obsidian .cm-strikethrough {
   color: var(--text-accent) !important;
 }
 
-a {
+.cm-s-obsidian .cm-link {
   color: var(--text-accent) !important;
-  text-decoration: underline dotted var(--text-accent) !important;
+  text-decoration: underline dotted var(--text-accent);
 }
 
-code {
+.cm-s-obsidian .cm-inline-code {
   background-color: var(--inline-bg) !important;
   color: var(--text-accent) !important;
-  padding: 2px 5px !important;
-  border-radius: 4px !important;
+  padding: 1px 4px;
+  border-radius: 4px;
 }
 
-mark {
-  background-color: var(--highlight-color) !important;
-  color: #000 !important;
+/* ===================== */
+/* === 正文行内格式 & 行高 ==== */
+/* ===================== */
+
+.markdown-preview-view p,
+.markdown-rendered p,
+.markdown-preview-view li,
+.markdown-rendered li {
+  line-height: 1.7;
 }
 
-/* 列表 marker 颜色 */
-ul > li::marker,
-ol > li::marker {
-  color: var(--heading-bg) !important;
+/* 加粗 */
+.markdown-preview-view strong,
+.markdown-rendered strong,
+.markdown-preview-view b,
+.markdown-rendered b {
+  color: var(--text-accent) !important;
+  text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.1);
 }
+
+/* 斜体 */
+.markdown-preview-view em,
+.markdown-rendered em,
+.markdown-preview-view i,
+.markdown-rendered i {
+  color: var(--text-accent) !important;
+}
+
+/* 删除线 */
+.markdown-preview-view del,
+.markdown-rendered del {
+  color: var(--text-accent) !important;
+}
+
+/* 链接 */
+.markdown-preview-view a,
+.markdown-rendered a {
+  color: var(--text-accent) !important;
+  text-decoration: underline dotted var(--text-accent);
+}
+
+/* 行内代码 */
+.markdown-preview-view code,
+.markdown-rendered code {
+  background-color: var(--inline-bg);
+  color: var(--text-accent);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* 高亮标记 */
+.markdown-preview-view mark,
+.markdown-rendered mark {
+  background-color: var(--highlight-color);
+  color: #000;
+}
+
+/* 列表 marker 颜色 
+.markdown-preview-view ul > li::marker,
+.markdown-rendered ul > li::marker,
+.markdown-preview-view ol > li::marker,
+.markdown-rendered ol > li::marker {
+  color: var(--heading-bg);
+  font-weight: bold; 
+  }*/
+
