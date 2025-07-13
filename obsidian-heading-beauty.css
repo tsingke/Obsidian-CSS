@@ -281,12 +281,38 @@ body .markdown-rendered h6::before {
   color: var(--text-accent) !important;
 }
 
+/* 预览模式下划线 */
+.markdown-preview-view u,
+.markdown-rendered u {
+  color: var(--text-accent) !important;
+  text-decoration: underline solid var(--text-accent);
+  text-underline-offset: 2px; /* 调整下划线与文字的距离，更美观 */
+}
+
+/* 编辑模式下划线 */
+.cm-s-obsidian .cm-underline {
+  color: var(--text-accent) !important;
+  text-decoration: underline solid var(--text-accent);
+  text-underline-offset: 2px;
+}
+
 /* 链接 */
 .markdown-preview-view a,
 .markdown-rendered a {
   color: var(--text-accent) !important;
   text-decoration: underline dotted var(--text-accent);
 }
+
+/* 解决链接中的图片被异常拉伸的问题 */
+.markdown-preview-view a img,
+.markdown-rendered a img {
+  width: 1em !important;
+  height: 1em !important;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+
 
 /* 行内代码 */
 .markdown-preview-view code,
@@ -312,4 +338,6 @@ body .markdown-rendered h6::before {
   color: var(--heading-bg);
   font-weight: bold; 
   }*/
+
+
 
