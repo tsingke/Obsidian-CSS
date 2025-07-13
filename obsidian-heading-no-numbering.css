@@ -1,0 +1,274 @@
+
+/* ===================== */
+/* ===== 颜色变量定义 ===== */
+/* ===================== */
+:root {
+  --heading-bg: #38a38b;
+  --heading-accent: #f2c94c;
+  --heading-color: white;
+  --secondary-color: #5fb89a;
+  --third-color: #7bc1aa;
+  --fourth-color: #99d1bd;
+  --fifth-color: #b5e0cf;
+  --text-accent: #38a38b;
+  --highlight-color: #f2c94c;
+  --inline-bg: #f0f7f6;
+}
+
+/* ===================== */
+/* ===== 预览模式 ===== */
+/* ===================== */
+
+/* 一级标题 (#) */
+body .markdown-preview-view h1,
+body .markdown-rendered h1 {
+  background-color: var(--heading-bg) !important;
+  color: var(--heading-color) !important;
+  padding: 8px 14px !important;
+  font-weight: bold !important;
+  margin-top: 2em !important;
+  margin-bottom: 1em !important;
+  font-size: 1.3em !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative !important;
+}
+
+body .markdown-preview-view h1::after,
+body .markdown-rendered h1::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 6px !important;
+  height: 100% !important;
+  background-color: var(--heading-accent) !important;
+  border-radius: 0 !important;
+}
+
+/* 二级标题 (##) */
+body .markdown-preview-view h2,
+body .markdown-rendered h2 {
+  color: var(--heading-bg) !important;
+  font-weight: bold !important;
+  padding-bottom: 4px !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 1em !important;
+  font-size: 1.15em !important;
+  border-bottom: none !important;
+  position: relative !important;
+}
+
+body .markdown-preview-view h2::after,
+body .markdown-rendered h2::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 2px !important;
+  background-color: var(--heading-accent) !important;
+}
+
+/* 三级标题 (###) */
+body .markdown-preview-view h3,
+body .markdown-rendered h3 {
+  color: var(--secondary-color) !important;
+  font-weight: bold !important;
+  margin-top: 1.2em !important;
+  margin-bottom: 0.6em !important;
+  font-size: 1.05em !important;
+}
+
+/* 四级标题 (####) */
+body .markdown-preview-view h4,
+body .markdown-rendered h4 {
+  color: var(--third-color) !important;
+  font-weight: bold !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+  font-size: 1em !important;
+}
+
+/* 五级标题 (#####) */
+body .markdown-preview-view h5,
+body .markdown-rendered h5 {
+  color: var(--fourth-color) !important;
+  font-weight: bold !important;
+  margin-top: 0.8em !important;
+  margin-bottom: 0.4em !important;
+  font-size: 0.95em !important;
+}
+
+/* 六级标题 (######) */
+body .markdown-preview-view h6,
+body .markdown-rendered h6 {
+  color: var(--fifth-color) !important;
+  font-weight: bold !important;
+  margin-top: 0.6em !important;
+  margin-bottom: 0.3em !important;
+  font-size: 0.9em !important;
+}
+
+/* ===================== */
+/* ===== 编辑模式 ===== */
+/* ===================== */
+
+.cm-s-obsidian .cm-header-1 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.3em;
+  color: var(--heading-color);
+  background-color: var(--heading-bg);
+  padding: 4px 8px 4px 12px;
+  border-left: 6px solid var(--heading-accent);
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0 !important;
+}
+
+.cm-s-obsidian .cm-header-2 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.15em;
+  color: var(--heading-bg);
+  font-weight: bold;
+  border-bottom: 2px solid var(--heading-accent);
+  padding-bottom: 2px;
+}
+
+.cm-s-obsidian .cm-header-3 {
+  font-size: 1.05em;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.cm-s-obsidian .cm-header-4 {
+  font-size: 1em;
+  color: var(--third-color);
+  font-weight: bold;
+}
+
+.cm-s-obsidian .cm-header-5 {
+  font-size: 0.95em;
+  color: var(--fourth-color);
+  font-weight: bold;
+}
+
+.cm-s-obsidian .cm-header-6 {
+  font-size: 0.9em;
+  color: var(--fifth-color);
+  font-weight: bold;
+}
+
+/* ===================== */
+/* ===== 其他样式 ===== */
+/* ===================== */
+
+/* 编辑模式行内格式 */
+.cm-s-obsidian .cm-strong {
+  color: var(--text-accent) !important;
+}
+
+.cm-s-obsidian .cm-em {
+  color: var(--text-accent) !important;
+}
+
+.cm-s-obsidian .cm-strikethrough {
+  color: var(--text-accent) !important;
+}
+
+.cm-s-obsidian .cm-link {
+  color: var(--text-accent) !important;
+  text-decoration: underline dotted var(--text-accent);
+}
+
+.cm-s-obsidian .cm-inline-code {
+  background-color: var(--inline-bg) !important;
+  color: var(--text-accent) !important;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+/* ===================== */
+/* === 正文行内格式 & 行高 ==== */
+/* ===================== */
+
+.markdown-preview-view p,
+.markdown-rendered p,
+.markdown-preview-view li,
+.markdown-rendered li {
+  line-height: 1.7;
+}
+
+/* 加粗 */
+.markdown-preview-view strong,
+.markdown-rendered strong,
+.markdown-preview-view b,
+.markdown-rendered b {
+  color: var(--text-accent) !important;
+  text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.1);
+}
+
+/* 斜体 */
+.markdown-preview-view em,
+.markdown-rendered em,
+.markdown-preview-view i,
+.markdown-rendered i {
+  color: var(--text-accent) !important;
+}
+
+/* 删除线 */
+.markdown-preview-view del,
+.markdown-rendered del {
+  color: var(--text-accent) !important;
+}
+
+/* 预览模式下划线 */
+.markdown-preview-view u,
+.markdown-rendered u {
+  color: var(--text-accent) !important;
+  text-decoration: underline solid var(--text-accent);
+  text-underline-offset: 2px;
+}
+
+/* 编辑模式下划线 */
+.cm-s-obsidian .cm-underline {
+  color: var(--text-accent) !important;
+  text-decoration: underline solid var(--text-accent);
+  text-underline-offset: 2px;
+}
+
+/* 链接 */
+.markdown-preview-view a,
+.markdown-rendered a {
+  color: var(--text-accent) !important;
+  text-decoration: underline dotted var(--text-accent);
+}
+
+/* 解决链接中的图片被异常拉伸的问题 */
+.markdown-preview-view a img,
+.markdown-rendered a img {
+  width: 1em !important;
+  height: 1em !important;
+  vertical-align: text-bottom;
+  display: inline-block;
+}
+
+/* 行内代码 */
+.markdown-preview-view code,
+.markdown-rendered code {
+  background-color: var(--inline-bg);
+  color: var(--text-accent);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* 高亮标记 */
+.markdown-preview-view mark,
+.markdown-rendered mark {
+  background-color: var(--highlight-color);
+  color: #000;
+}
